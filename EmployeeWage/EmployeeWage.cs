@@ -6,46 +6,37 @@ namespace EmployeeWage
     {
         const int fullDayPresent = 1;
         const int halfDayPresent = 2;
-        const int maxDay = 20;
-        const int maxHour = 100;
+  
 
-       public static int dailyWage, empHour = 0, totalday = 0, totalEmpHour = 0, wagePerHour = 20;
+       public static int  empHour = 0, totalday = 0, totalEmpHour = 0;
 
-       public static int getEmployeeHour(int empCheck)
-       {
-            switch (empCheck)
-            {
-                case fullDayPresent:
-                    empHour = 8;
-                    break;
-
-                case halfDayPresent:
-                    empHour = 4;
-
-                    break;
-
-                default:
-                    empHour = 0;
-                    break;
-            }
-            return empHour;
-       }
-        public void employeeWage() 
-        {
+        public void employeeWageForCompany(int maxDay,int maxHour,int wagePerHour,string companyName)
+        {          
             Random rnd = new Random();
-
-            while (empHour <= maxHour && totalday <maxDay) 
+            while (totalEmpHour < maxHour && totalday <maxDay) 
             {
-               
                 int empCheck = rnd.Next(0, 3);
-                totalEmpHour += getEmployeeHour(empCheck);
+                switch (empCheck)
+                {
+                    case fullDayPresent:
+                        empHour = 8;
+                        break;
 
-                totalday++;
-                Console.WriteLine($"Emp Hour:{empHour}\nTotal Day{totalday}");
+                    case halfDayPresent:
+                        empHour = 4;
+                        
+                        break;
+
+                    default:
+                        empHour = 0;
+                        break;
+                }
+                totalEmpHour += empHour;
+                totalday++;          
 
             }
-            dailyWage = totalEmpHour * wagePerHour;
-            Console.WriteLine($"Daily Wage is:{dailyWage}\nTotal Hour:{totalEmpHour}\nTotal Day{totalday}");
+             int  monthlyWage = totalEmpHour * wagePerHour;
+             Console.WriteLine($"Company Name :{companyName}\nMonthly Wage is:{monthlyWage}\nTotal Hour:{totalEmpHour}\nTotal Day{totalday}");
         }
     }
 }
