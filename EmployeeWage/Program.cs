@@ -8,7 +8,8 @@ namespace EmployeeWage
         {
             Console.WriteLine("Welcome in Employee Wage program");
             EmployeeWage employeeWage = new EmployeeWage();
-            employeeWage.attendence();
+            employeeWage.employeeWage();
+
         }
     }
 }
